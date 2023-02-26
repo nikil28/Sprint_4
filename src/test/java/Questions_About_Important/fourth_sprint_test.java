@@ -1,6 +1,7 @@
 package Questions_About_Important;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -180,8 +181,8 @@ public class fourth_sprint_test { // тесты четвертого сприн�
 
 
     }
- //  @After // после теста
- //  public void tearDown(){ //метод для закрытия браузера по завершению теста
- //      driver.quit(); //  закрыть браузер
- //   }
+   @After // после теста
+     public void tearDown(){ //метод для закрытия браузера по завершению теста
+      driver.quit(); //  закрыть браузер
+   }
 }
