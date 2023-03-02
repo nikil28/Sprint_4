@@ -118,4 +118,5 @@ public class OrderPage {
     public boolean isOrderСreated(){ // метод что заказ создан
         return webDriver.findElement(orderСreated).isDisplayed();
     }
+
 }
