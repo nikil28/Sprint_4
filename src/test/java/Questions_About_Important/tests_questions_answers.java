@@ -15,34 +15,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
- //@RunWith(Parameterized.class)
  public class tests_questions_answers { // тут тесты на вопросы-ответы
- //private final String answer; // ответ
- //private final String expected; // ожидаем
- //public tests_questions_answers(String answer,String expected){ // конструктор класса tests_questions_answers
- //    this.answer = answer;
- //    this.expected = expected;
- //}
- //    @Parameterized.Parameters // добавили аннотацию
- //    public static Object[][] getText() {
- //          return new Object[][] {
- //            {"Сутки — 400 рублей. Оплата курьеру — наличными или картой."},
- //            { "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."},
- //    };
- //}
-
-   //@Test
-  //public void newTest(){
-  //    MainPage mainPage = new MainPage(driver);
-  //    mainPage.open();
-  //    WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
-  //    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-  //    //mainPage.clickPaymentСostButton(); // кликнуть на Сколько это стоит? И как оплатить?
-  //    mainPage.clickAnObject(mainPage.paymentСostButton);
-  //    mainPage.clickSeveralScootersButton(); // кликнуть на Хочу сразу несколько самокатов! Так можно?
-  //    assertEquals(expected,driver.findElement(By.id("accordion__panel-0")).getText());
-  //}
-
 
     WebDriver driver; // локальная переменная driver
      MainPage mainPage;
@@ -84,6 +57,30 @@ import static org.junit.Assert.assertEquals;
      public void check2(){
          parametrizedCheck(mainPage.severalScooters, "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.","accordion__panel-1");
      }
+     @Test
+     public void check3(){
+         parametrizedCheck(mainPage.calculateRentalTime, "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.","accordion__panel-2");
+     }
+     @Test
+     public void check4(){
+         parametrizedCheck(mainPage.orderScooterToday, "Только начиная с завтрашнего дня. Но скоро станем расторопнее.","accordion__panel-3");
+     }
+     @Test
+     public void check5(){
+         parametrizedCheck(mainPage.extendReturnOrder, "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.","accordion__panel-4");
+     }
+     @Test
+     public void check6(){
+         parametrizedCheck(mainPage.chargingWithScooter, "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.","accordion__panel-5");
+     }
+     @Test
+     public void check7(){
+         parametrizedCheck(mainPage.canCancelOrder, "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.","accordion__panel-6");
+     }
+     @Test
+     public void check8(){
+         parametrizedCheck(mainPage.outsideMoscowRingRoad, "Да, обязательно. Всем самокатов! И Москве, и Московской области.","accordion__panel-7");
+     }
 
 
 
@@ -99,77 +96,77 @@ import static org.junit.Assert.assertEquals;
 //        System.out.print("тест прошел");
 //    }
 
-    @Test
-    public void checkTextCalculateRentalTime(){ // Проверить текст по нажатию кнопки Как рассчитывается время аренды?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickCalculateRentalTimeButton(); // кликнуть на Как рассчитывается время аренды?
-        mainPage.clickAnObject(mainPage.calculateRentalTime);
-        assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", driver.findElement(By.id("accordion__panel-2")).getText()); // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+//    @Test
+//   public void checkTextCalculateRentalTime(){ // Проверить текст по нажатию кнопки Как рассчитывается время аренды?
+//       MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+//       mainPage.open(); // открыть главную страницу
+//       WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
+//       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+///      mainPage.clickCalculateRentalTimeButton(); // кликнуть на Как рассчитывается время аренды?
+//       mainPage.clickAnObject(mainPage.calculateRentalTime);
+//       assertEquals("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", driver.findElement(By.id("accordion__panel-2")).getText()); // проверить что текст правильный
+//       System.out.print("тест прошел");
+//   }
 
-    @Test
-    public void checkTextOrderScooterToday(){ //Проверить текст по нажатию кнопки Можно ли заказать самокат прямо на сегодня?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickOrderScooterTodayButton(); // кликнуть на Можно ли заказать самокат прямо на сегодня?
-        mainPage.clickAnObject(mainPage.orderScooterToday);
-        assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.", driver.findElement(By.id("accordion__panel-3")).getText()); // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+ //   @Test
+ //   public void checkTextOrderScooterToday(){ //Проверить текст по нажатию кнопки Можно ли заказать самокат прямо на сегодня?
+ //       MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+ //       mainPage.open(); // открыть главную страницу
+ //       WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
+ //       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+////      mainPage.clickOrderScooterTodayButton(); // кликнуть на Можно ли заказать самокат прямо на сегодня?
+ //       mainPage.clickAnObject(mainPage.orderScooterToday);
+ //       assertEquals("Только начиная с завтрашнего дня. Но скоро станем расторопнее.", driver.findElement(By.id("accordion__panel-3")).getText()); // проверить что текст правильный
+ //       System.out.print("тест прошел");
+ //   }
 
-    @Test
-    public void checkTextExtendReturnOrder(){ // Проверить текст по нажатию кнопки Можно ли продлить заказ или вернуть самокат раньше?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickExtendReturnOrderButton(); // кликнуть на Можно ли продлить заказ или вернуть самокат раньше?
-        mainPage.clickAnObject(mainPage.extendReturnOrder);
-        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", driver.findElement(By.id("accordion__panel-4")).getText()); // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+//    @Test
+//    public void checkTextExtendReturnOrder(){ // Проверить текст по нажатию кнопки Можно ли продлить заказ или вернуть самокат раньше?
+//        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+//        mainPage.open(); // открыть главную страницу
+//        WebElement element = driver.findElement(By.id("accordion__heading-0")); // Прокрути страницу до Сколько это стоит? И как оплатить?
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+////      mainPage.clickExtendReturnOrderButton(); // кликнуть на Можно ли продлить заказ или вернуть самокат раньше?
+//        mainPage.clickAnObject(mainPage.extendReturnOrder);
+//        assertEquals("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", driver.findElement(By.id("accordion__panel-4")).getText()); // проверить что текст правильный
+//        System.out.print("тест прошел");
+//    }
 
-    @Test
-    public void checkTextChargingWithScooter(){ // Проверить текст по нажатию кнопки Вы привозите зарядку вместе с самокатом?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-5")); // Прокрути страницу до Вы привозите зарядку вместе с самокатом?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickChargingWithScooterButton(); // кликнуть на Вы привозите зарядку вместе с самокатом?
-        mainPage.clickAnObject(mainPage.chargingWithScooter);
-        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", driver.findElement(By.id("accordion__panel-5")).getText()); // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+//    @Test
+//    public void checkTextChargingWithScooter(){ // Проверить текст по нажатию кнопки Вы привозите зарядку вместе с самокатом?
+//        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+//        mainPage.open(); // открыть главную страницу
+//        WebElement element = driver.findElement(By.id("accordion__heading-5")); // Прокрути страницу до Вы привозите зарядку вместе с самокатом?
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+////      mainPage.clickChargingWithScooterButton(); // кликнуть на Вы привозите зарядку вместе с самокатом?
+//        mainPage.clickAnObject(mainPage.chargingWithScooter);
+//        assertEquals("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", driver.findElement(By.id("accordion__panel-5")).getText()); // проверить что текст правильный
+//        System.out.print("тест прошел");
+//    }
 
-    @Test
-    public void checkTextCanCancelOrder() { // проверить текст нажатию кнопки Можно ли отменить заказ?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-6")); // Прокрути страницу до Можно ли отменить заказ?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickCanCancelOrderButton(); // кликнуть на Можно ли отменить заказ?
-        mainPage.clickAnObject(mainPage.canCancelOrder);
-        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", driver.findElement(By.id("accordion__panel-6")).getText());  // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+//    @Test
+//    public void checkTextCanCancelOrder() { // проверить текст нажатию кнопки Можно ли отменить заказ?
+//        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+//        mainPage.open(); // открыть главную страницу
+//        WebElement element = driver.findElement(By.id("accordion__heading-6")); // Прокрути страницу до Можно ли отменить заказ?
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+////      mainPage.clickCanCancelOrderButton(); // кликнуть на Можно ли отменить заказ?
+//        mainPage.clickAnObject(mainPage.canCancelOrder);
+//        assertEquals("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", driver.findElement(By.id("accordion__panel-6")).getText());  // проверить что текст правильный
+//        System.out.print("тест прошел");
+//    }
 
-    @Test
-    public void checkTextOutsideMoscowRingRoad(){ // проверить текст нажатию кнопки Я жизу за МКАДом, привезёте?
-        MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
-        mainPage.open(); // открыть главную страницу
-        WebElement element = driver.findElement(By.id("accordion__heading-6")); // Прокрути страницу до Можно ли отменить заказ?
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
-//      mainPage.clickOutsideMoscowRingRoadButton(); // кликнуть на Я жизу за МКАДом, привезёте?
-        mainPage.clickAnObject(mainPage.outsideMoscowRingRoad);
-        assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.", driver.findElement(By.id("accordion__panel-7")).getText());  // проверить что текст правильный
-        System.out.print("тест прошел");
-    }
+//   @Test
+//   public void checkTextOutsideMoscowRingRoad(){ // проверить текст нажатию кнопки Я жизу за МКАДом, привезёте?
+//       MainPage mainPage = new MainPage(driver); // инициализация класса MainPage
+//       mainPage.open(); // открыть главную страницу
+//       WebElement element = driver.findElement(By.id("accordion__heading-6")); // Прокрути страницу до Можно ли отменить заказ?
+//       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+///      mainPage.clickOutsideMoscowRingRoadButton(); // кликнуть на Я жизу за МКАДом, привезёте?
+//       mainPage.clickAnObject(mainPage.outsideMoscowRingRoad);
+//       assertEquals("Да, обязательно. Всем самокатов! И Москве, и Московской области.", driver.findElement(By.id("accordion__panel-7")).getText());  // проверить что текст правильный
+//       System.out.print("тест прошел");
+//   }
 
    @After // после теста
      public void tearDown(){ //метод для закрытия браузера по завершению теста
